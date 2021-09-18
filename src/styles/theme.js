@@ -6,9 +6,9 @@ export const theme = {
             'section-background': '#1a1d21',
         },
         violet: {
+            'main': '#6715eb',
             'border': '#2c2831',
             'sidebar-background': '#14101A',
-            'selected': '#6715eb',
             'input-background': 'rgba(255, 255, 255, 0.2)',
         }
     }
