@@ -9,6 +9,7 @@ export const theme = {
             'main': '#6715eb',
             'border': '#2c2831',
             'sidebar-background': '#14101A',
+            'sidebar-item-hover': '#241D2E',
             'input-background': 'rgba(255, 255, 255, 0.2)',
         }
     }
