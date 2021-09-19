@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    faTag,
+    faCubes,
+    faEllipsisV,
+} from '@fortawesome/free-solid-svg-icons';
+import {
     faComments,
     faCommentDots,
-    faTag,
-    faEllipsisV,
-    faCubes,
-} from '@fortawesome/free-solid-svg-icons';
+} from '@fortawesome/free-regular-svg-icons';
 
 
 export const items = [

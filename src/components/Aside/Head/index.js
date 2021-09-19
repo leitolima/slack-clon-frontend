@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-regular-svg-icons';
 
 import {
     Container,
@@ -10,7 +12,9 @@ const Head = () => {
     return (
         <Container>
             <GroupTitle>Slack Clon</GroupTitle>
-            <Button></Button>
+            <Button>
+                <FontAwesomeIcon icon={faEdit}/>
+            </Button>
         </Container>
     )
 }
