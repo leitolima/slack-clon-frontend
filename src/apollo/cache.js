@@ -2,7 +2,8 @@ import {
     InMemoryCache
 } from '@apollo/client';
 import {
-    userId
+    userId,
+    groupId,
 } from './state';
 
 export const cache = new InMemoryCache({
@@ -21,6 +22,11 @@ export const cache = new InMemoryCache({
                 userId: {
                     read() {
                         return userId();
+                    }
+                },
+                groupId: {
+                    read() {
+                        return groupId();
                     }
                 }
             }

@@ -33,3 +33,9 @@ export const GET_MY_GROUPS = gql`
         }
     }
 `;
+
+export const GET_GROUP_ID = gql`
+    query getGroupId {
+        groupId @client
+    }
+`;
