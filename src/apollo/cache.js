@@ -10,16 +10,10 @@ export const cache = new InMemoryCache({
                     read(id = null) {
                         return id;
                     }
-                }
-            }
-        },
-        Query: {
-            fields: {
-                getRandomUser: {
-                    read(_, { args, toReference }) {
-                        return toReference({
-                            __typename: 'User',
-                        })
+                },
+                imageUrl: {
+                    read(imageUrl = '') {
+                        return imageUrl;
                     }
                 }
             }

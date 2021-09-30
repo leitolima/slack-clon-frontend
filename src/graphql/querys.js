@@ -11,10 +11,10 @@ export const GET_RANDOM_USER = gql`
     }
 `;
 
-export const GET_USER_DATA = gql`
+export const GET_USER_IMAGE = gql`
     query {
         user: getRandomUser {
-            id @client
+            imageUrl @client
         }
     }
 `;
