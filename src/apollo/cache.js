@@ -3,5 +3,26 @@ import {
 } from '@apollo/client';
 
 export const cache = new InMemoryCache({
-   addTypename: false 
+    typePolicies: {
+        User: {
+            fields: {
+                id: {
+                    read(id = null) {
+                        return id;
+                    }
+                }
+            }
+        },
+        Query: {
+            fields: {
+                getRandomUser: {
+                    read(_, { args, toReference }) {
+                        return toReference({
+                            __typename: 'User',
+                        })
+                    }
+                }
+            }
+        }
+    }
 });

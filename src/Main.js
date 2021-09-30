@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useQuery } from '@apollo/client';
+import { GET_RANDOM_USER } from './graphql/querys';
+
 import Header from './components/Header';
 import Aside from './components/Aside';
 import Section from './components/Section';
@@ -17,9 +20,18 @@ export const MainField = styled.main`
 `;
 
 const Main = () => {
+
+    const { loading, error, data } = useQuery(GET_RANDOM_USER, {
+        fetchPolicy: 'cache-first'
+    });
+
+    if(data?.user?.id) {
+        console.log(data);
+    }
+
     return (
         <MainField>
-            <Header/>
+            <Header loading={loading} error={error}/>
             <Aside/>
             <Section/>
         </MainField>
