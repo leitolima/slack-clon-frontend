@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
-import { useQuery } from '@apollo/client';
 import { groupId } from '../../../apollo/state';
+import { useQuery, useReactiveVar } from '@apollo/client';
 import { GET_MY_GROUPS, GET_USER_ID } from '../../../graphql/querys';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,6 +15,8 @@ import {
 
 const Head = () => {
 
+    const group = useReactiveVar(groupId);
+
     const { data: { userId } } = useQuery(GET_USER_ID);
     const { data } = useQuery(GET_MY_GROUPS, {
         variables: { userId }
@@ -27,16 +29,22 @@ const Head = () => {
         }
     }, [data])
 
+    const renderGroupName = () => {
+        const localGroup = data.groups.filter(item => item.id === group)
+        return localGroup[0].name;
+    }
+
     return (
         <Container>
             {
-                userId ? <>
-                    <GroupTitle>Slack Clon</GroupTitle>
-                    <Button>
-                        <FontAwesomeIcon icon={faEdit}/>
-                    </Button>
-                </>
-                : null
+                group
+                    ? <>
+                        <GroupTitle>{renderGroupName()}</GroupTitle>
+                        <Button>
+                            <FontAwesomeIcon icon={faEdit}/>
+                        </Button>
+                    </>
+                    : null
             }
         </Container>
     )
