@@ -8,13 +8,20 @@ import {
     Button,
 } from './styles';
 
-const Head = () => {
+const Head = ({ userId }) => {
+
+
     return (
         <Container>
-            <GroupTitle>Slack Clon</GroupTitle>
-            <Button>
-                <FontAwesomeIcon icon={faEdit}/>
-            </Button>
+            {
+                userId ? <>
+                    <GroupTitle>Slack Clon</GroupTitle>
+                    <Button>
+                        <FontAwesomeIcon icon={faEdit}/>
+                    </Button>
+                </>
+                : null
+            }
         </Container>
     )
 }

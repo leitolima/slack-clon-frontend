@@ -13,7 +13,7 @@ import Profile from './Profile';
 const Header = ({ loading, error }) => {
 
     const renderChildren = () => {
-        if(loading, error) return null;
+        if(loading || error) return null;
         return <>
             <History>
                 <FontAwesomeIcon icon={faClock}/>

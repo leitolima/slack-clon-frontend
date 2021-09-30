@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { userId } from './apollo/state';
 import { useQuery } from '@apollo/client';
 import { GET_RANDOM_USER } from './graphql/querys';
 
@@ -26,7 +27,7 @@ const Main = () => {
     });
 
     if(data?.user?.id) {
-        console.log(data);
+        userId(data.user.id)
     }
 
     return (

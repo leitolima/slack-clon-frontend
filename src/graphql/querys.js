@@ -19,6 +19,12 @@ export const GET_USER_IMAGE = gql`
     }
 `;
 
+export const GET_USER_ID = gql`
+    query getUserId {
+        userId @client
+    }
+`;
+
 export const GET_MY_GROUPS = gql`
     query getMyGroups($userId: ID) {
         groups: getMyGroups(userId: $userId) {
