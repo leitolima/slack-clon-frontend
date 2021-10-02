@@ -12,7 +12,7 @@ export const ListContainer = styled.ul`
 export const ListItem = styled.li`
     font-weight: 600;
     font-size: 16px;
-    color: ${p => p.theme.colors['dark']['sidebar-text']};
+    color: ${p => p.selected ? 'white' : p.theme.colors['dark']['sidebar-text']};
     padding-top: 3.5px;
     padding-bottom: 3.5px;
     padding-left: 34px;
@@ -20,7 +20,8 @@ export const ListItem = styled.li`
     svg {
         margin-right: 12px;
     }
+    background-color: ${p => p.selected ? p.theme.colors['violet']['main'] : 'transparent'};
     &:hover {
-        background-color: ${p => p.theme.colors['violet']['sidebar-item-hover']};
+        background-color: ${p => p.selected ? p.theme.colors['violet']['main'] : p.theme.colors['violet']['sidebar-item-hover']};
     }
 `;

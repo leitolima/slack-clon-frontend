@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'proptypes';
+import { useHistory } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
@@ -15,12 +16,20 @@ const ChannelsList = ({
     data,
 }) => {
 
+    const history = useHistory();
+    const { location: { pathname } } = history;
+    const route = pathname.replace('/', '');
+
     return (
         <ListContainer show={show}>
             {
                 !loading && data?.channels?.length
                     ? data.channels.map(item => (
-                        <ListItem key={item.id}>
+                        <ListItem
+                            key={item.id}
+                            selected={route === item.id}
+                            onClick={() => history.push(`/${item.id}`)}
+                        >
                             <FontAwesomeIcon icon={faHashtag}/>
                             {item.name}
                         </ListItem>
@@ -31,10 +40,10 @@ const ChannelsList = ({
     )
 }
 
-ChannelsList.proptypes = {
-    show: PropTypes.bool,
-    loading: PropTypes.bool,
-    data: PropTypes.array,
+ChannelsList.propTypes = {
+    show: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
+    data: PropTypes.object,
 }
 
 export default ChannelsList;
