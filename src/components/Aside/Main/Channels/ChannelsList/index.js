@@ -3,7 +3,7 @@ import PropTypes from 'proptypes';
 import { useHistory } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { faHashtag, faLock } from '@fortawesome/free-solid-svg-icons';
 
 import {
     ListContainer,
@@ -30,7 +30,7 @@ const ChannelsList = ({
                             selected={route === item.id}
                             onClick={() => history.push(`/${item.id}`)}
                         >
-                            <FontAwesomeIcon icon={faHashtag}/>
+                            <FontAwesomeIcon icon={item.public ? faHashtag : faLock}/>
                             {item.name}
                         </ListItem>
                     ))
