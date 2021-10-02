@@ -1,0 +1,26 @@
+import styled from 'styled-components';
+
+export const ListContainer = styled.ul`
+    list-style-type: none;
+    display: ${p => p.show ? 'flex' : 'none'};
+    flex-direction: column;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+`;
+
+export const ListItem = styled.li`
+    font-weight: 600;
+    font-size: 16px;
+    color: ${p => p.theme.colors['dark']['sidebar-text']};
+    padding-top: 3.5px;
+    padding-bottom: 3.5px;
+    padding-left: 34px;
+    cursor: pointer;
+    svg {
+        margin-right: 12px;
+    }
+    &:hover {
+        background-color: ${p => p.theme.colors['violet']['sidebar-item-hover']};
+    }
+`;

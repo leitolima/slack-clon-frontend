@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    padding-left: 16px;
 `;
 
 export const TitleContainer = styled.div`
@@ -11,6 +10,7 @@ export const TitleContainer = styled.div`
     height: 36px;
     display: flex;
     cursor: pointer;
+    padding-left: 16px;
     align-items: center;
     justify-content: space-between;
 `;

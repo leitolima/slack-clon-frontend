@@ -39,3 +39,12 @@ export const GET_GROUP_ID = gql`
         groupId @client
     }
 `;
+
+export const GET_MY_CHANNELS = gql`
+    query getMyChannels($groupId: ID, $userId: ID) {
+        channels: getMyChannels(groupId: $groupId, userId: $userId) {
+            id
+            name
+        }
+    }
+`;
