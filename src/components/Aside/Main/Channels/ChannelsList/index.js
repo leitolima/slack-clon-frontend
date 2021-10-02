@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'proptypes';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +29,12 @@ const ChannelsList = ({
             }
         </ListContainer>
     )
+}
+
+ChannelsList.proptypes = {
+    show: PropTypes.bool,
+    loading: PropTypes.bool,
+    data: PropTypes.array,
 }
 
 export default ChannelsList;
