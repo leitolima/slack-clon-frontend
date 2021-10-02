@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'proptypes';
 import { useHistory } from 'react-router-dom';
+
+import { channelName } from '../../../../../apollo/state';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faLock } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +22,20 @@ const ChannelsList = ({
     const { location: { pathname } } = history;
     const route = pathname.replace('/', '');
 
+    const handleSelect = (id, name) => {
+        channelName(name);
+        history.push(`/${id}`)
+    }
+
+    // Load channel name at the first moment
+    useEffect(() => {
+        if(data && data.channels) {
+            const selected = data.channels.filter(item => item.id === route);
+            const { name } =  selected[0];
+            channelName(name);
+        }
+    }, [data]);
+
     return (
         <ListContainer show={show}>
             {
@@ -28,7 +44,7 @@ const ChannelsList = ({
                         <ListItem
                             key={item.id}
                             selected={route === item.id}
-                            onClick={() => history.push(`/${item.id}`)}
+                            onClick={() => handleSelect(item.id, item.name)}
                         >
                             <FontAwesomeIcon icon={item.public ? faHashtag : faLock}/>
                             {item.name}
