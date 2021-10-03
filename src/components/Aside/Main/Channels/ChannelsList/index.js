@@ -31,8 +31,10 @@ const ChannelsList = ({
     useEffect(() => {
         if(data && data.channels) {
             const selected = data.channels.filter(item => item.id === route);
-            const { name } =  selected[0];
-            channelName(name);
+            if (selected.length) {
+                const { name } =  selected[0];
+                channelName(name);
+            }
         }
     }, [data]);
 
