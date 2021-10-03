@@ -8,11 +8,11 @@ export const Overlay = styled.div`
     right: 0;
     z-index: 100;
     cursor: default;
+    background-color: transparent;
     display: ${p => p.show ? 'block' : 'none'};
-    background-color: ${p => p.transparent ? 'transparent' : ''};
 `;
 
-export const Modal = styled.article`
+export const Modal = styled.section`
     z-index: 101;
     position: fixed;
     border-radius: 6px;
@@ -23,7 +23,7 @@ export const Modal = styled.article`
     background-color: ${p => p.theme.colors['dark']['section-background']};
 `;
 
-export const ModalBody = styled.div`
+export const ModalBody = styled.article`
     padding: 12px 0px;
     cursor: default;
 `;
