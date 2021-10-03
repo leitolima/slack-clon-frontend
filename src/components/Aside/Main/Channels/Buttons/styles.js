@@ -12,6 +12,9 @@ export const TitleContainer = styled.div`
 
 export const Flex = styled.div`
     display: flex;
+    &:nth-child(1) {
+        flex-grow: 1;
+    }
 `;
 
 export const Title = styled.h2`
@@ -44,5 +47,24 @@ export const Button = styled.button`
     }
     &:hover {
         background-color: ${p => p.theme.colors['violet']['sidebar-item-hover']};
+    }
+`;
+
+export const ModalList = styled.ul`
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+`;
+
+export const ModalOption = styled.li`
+    font-size: 16px;
+    font-weight: 600;
+    padding: 3px 20px;
+    width: 160px;
+    color: ${p => p.theme.colors['dark']['sidebar-text']};
+    &:hover {
+        cursor: pointer;
+        color: ${p => p.theme.colors['dark']['message-text']};
+        background-color: ${p => p.theme.colors['dark']['lightblue']};
     }
 `;

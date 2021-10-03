@@ -4,6 +4,7 @@ export const theme = {
             'sidebar-text': '#ADABAF',
             'message-text': '#D1D2D3',
             'section-background': '#1a1d21',
+            'lightblue': '#1264a3',
         },
         violet: {
             'main': '#6715eb',
