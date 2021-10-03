@@ -54,7 +54,7 @@ const Buttons = ({
                 left={modalPos.left}
                 setShow={setModalShow}
             >
-                <ModalChildren/>
+                <ModalChildren setShow={setModalShow}/>
             </ModalSmall>
         </TitleContainer>
     )

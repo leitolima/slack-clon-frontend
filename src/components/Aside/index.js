@@ -6,6 +6,7 @@ import {
 import Head from './Head';
 import Main from './Main';
 import Foot from './Foot';
+import CreateChannel from '../CreateChannel';
 
 const Aside = () => {
 
@@ -14,6 +15,7 @@ const Aside = () => {
             <Head/>
             <Main/>
             <Foot/>
+            <CreateChannel/>
         </AsideField>
     )
 }
