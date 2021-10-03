@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const InputArea = styled.textarea`
-    width: 95%;
+    width: calc(100% - 40px);
     height: 75px;
     resize: none;
     border-radius: 5px;
