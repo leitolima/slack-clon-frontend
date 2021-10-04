@@ -2,9 +2,12 @@ export const theme = {
     colors: {
         dark: {
             'sidebar-text': '#ADABAF',
+            'text': '#ADABAF',
             'message-text': '#D1D2D3',
+            'item-hover': 'rgba(232, 232, 232, 0.04)',
             'section-background': '#1a1d21',
             'lightblue': '#1264a3',
+            'checked': '#007a5a',
         },
         violet: {
             'main': '#6715eb',
