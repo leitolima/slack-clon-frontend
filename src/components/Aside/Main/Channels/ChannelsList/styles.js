@@ -19,6 +19,7 @@ export const ListItem = styled.li`
     cursor: pointer;
     svg {
         margin-right: 12px;
+        font-size: 12px;
     }
     background-color: ${p => p.selected ? p.theme.colors['violet']['main'] : 'transparent'};
     &:hover {
