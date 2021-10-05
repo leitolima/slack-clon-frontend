@@ -55,7 +55,7 @@ const CreateChannel = () => {
         <ModalBig show={showModal} setShow={() => createChannelModal(false)}>
             <TitleContainer>
                 <Title>Crear un canal</Title>
-                <CancelButton>
+                <CancelButton onClick={() => createChannelModal(false)}>
                     <FontAwesomeIcon icon={faTimes}/>    
                 </CancelButton>
             </TitleContainer>
