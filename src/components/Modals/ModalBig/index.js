@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'proptypes';
 
 import {
+    Container,
     Overlay,
     Modal,
     ModalBody,
@@ -9,14 +10,14 @@ import {
 
 const ModalBig = ({ show = true, setShow, children }) => {
     return (
-        <>
-            <Overlay show={show} onClick={() => setShow(false)}/>
+        <Container show={show}>
+            <Overlay onClick={() => setShow(false)}/>
             <Modal show={show}>
                 <ModalBody>
                     { children }
                 </ModalBody>
             </Modal>
-        </>
+        </Container>
     )
 }
 

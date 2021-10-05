@@ -8,6 +8,7 @@ export const theme = {
             'section-background': '#1a1d21',
             'lightblue': '#1264a3',
             'checked': '#007a5a',
+            'error': '#e01e5a',
         },
         violet: {
             'main': '#6715eb',
