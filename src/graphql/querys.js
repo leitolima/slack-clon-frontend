@@ -46,6 +46,7 @@ export const GET_MY_CHANNELS = gql`
             id
             name
             public
+            channelType
         }
     }
 `;

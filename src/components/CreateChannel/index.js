@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { useReactiveVar } from '@apollo/client';
-import { createChannelModal } from '../../apollo/state';
+import { GET_MY_CHANNELS } from '../../graphql/querys';
+import { CREATE_CHANNEL } from '../../graphql/mutations';
+import { useReactiveVar, useMutation } from '@apollo/client';
+import { createChannelModal, userId, groupId } from '../../apollo/state';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faHashtag, faLock } from '@fortawesome/free-solid-svg-icons';
@@ -30,14 +33,39 @@ import {
 import ModalBig from '../Modals/ModalBig';
 import ToggleSwitch from '../ToggleSwitch';
 
+const initialValues = {
+    name: '',
+    description: '',
+    public: true,
+}
+
 const CreateChannel = () => {
 
+    const history = useHistory();
     const [chars, setChars] = useState(maxChars);
-    const [values, setValues] = useState({
-        name: '',
-        description: '',
-        public: true,
-    })
+    const [values, setValues] = useState(initialValues)
+
+    const [createChannelMutation, { loading }] = useMutation(CREATE_CHANNEL, {
+        update(cache, { data: { channel } }) {
+            const { channels } = cache.readQuery({
+                query: GET_MY_CHANNELS,
+                variables: {
+                    groupId: groupId(),
+                    userId: userId(),
+                }
+            });
+            cache.writeQuery({
+                query: GET_MY_CHANNELS,
+                variables: {
+                    groupId: groupId(),
+                    userId: userId(),
+                },
+                data: {
+                    channels: [...channels, channel]
+                }
+            });
+        }
+    });
 
     const showModal = useReactiveVar(createChannelModal);
 
@@ -47,9 +75,36 @@ const CreateChannel = () => {
         }
         setValues({
             ...values,
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.id === 'public'
+                ? Boolean(!values.public)
+                : e.target.value
         })
     }
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const { data } = await createChannelMutation({
+            variables: {
+                input: {
+                    name: values.name,
+                    groupId: groupId(),
+                    createdBy: userId(),
+                    public: values.public,
+                    channelType: 'Channel',
+                    description: values.description,
+                }
+            }
+        })
+        const { channel: { id } } = data;
+        history.push(`/${id}`);
+        resetComponent();
+    }
+    
+    const resetComponent = () => {
+        setChars(true)
+        setValues(initialValues);
+        createChannelModal(false);
+    } 
 
     return (
         <ModalBig show={showModal} setShow={() => createChannelModal(false)}>
@@ -65,7 +120,9 @@ const CreateChannel = () => {
                     mejor cuando se organizan en torno a un tema, por ejemplo
                     #marketing.
                 </Description>
-                <Form>
+                <Form
+                    onSubmit={handleSubmit}
+                >
                     <InputGroup>
                         <Label>Nombre:</Label>
                         <InputContainer chars={chars}>
