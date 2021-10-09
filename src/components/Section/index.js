@@ -35,7 +35,9 @@ const Section = () => {
                 error={error}
                 loading={loading}
                 title={channelData?.channel?.name}
+                publicType={channelData?.channel?.public}
                 members={channelData?.channel?.members}
+                description={channelData?.channel?.description}
             />
             <MessagesArea/>
             <TextArea/>

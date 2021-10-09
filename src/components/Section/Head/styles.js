@@ -10,7 +10,14 @@ export const Container = styled.div`
     border-bottom: 1px solid ${p => p.theme.colors['violet']['border']};
 `;
 
+export const TitleContainer = styled.div`
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+`;
+
 export const Title = styled.h1`
+    margin: 0;
     left: -8px;
     cursor: pointer;
     font-size: 21px;
@@ -21,10 +28,20 @@ export const Title = styled.h1`
     color: ${p => p.theme.colors['dark']['sidebar-text']};
     svg {
         margin-right: 5px;
+        font-size: 16px;
+        margin-bottom: 2px;
     }
     &:hover {
         background-color: ${p => p.theme.colors['dark']['item-hover']};
     }
+`;
+
+export const P = styled.p`
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: ${p => p.theme.colors['dark']['text']};
 `;
 
 export const MembersContainer = styled.div`

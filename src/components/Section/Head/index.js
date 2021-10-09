@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHashtag, faLock } from '@fortawesome/free-solid-svg-icons';
+
 import {
     Container,
+    TitleContainer,
     Title,
+    P,
     MembersContainer,
     List,
     ListItem,
@@ -11,12 +16,25 @@ import {
     Span,
 } from './styles';
 
-const Head = ({ loading, error, title = '', members = [] }) => {
+const Head = ({
+    error,
+    loading,
+    title = '',
+    publicType,
+    description,
+    members = [],
+}) => {
 
     const renderChildren = () => {
         if(loading || error) return null;
         return <>
-            <Title>{title}</Title>
+            <TitleContainer>
+                <Title>
+                    <FontAwesomeIcon icon={publicType ? faHashtag : faLock}/>
+                    {title}
+                </Title>
+                <P>{description}</P>
+            </TitleContainer>
             <MembersContainer>
                 <List>
                 {
@@ -44,7 +62,10 @@ const Head = ({ loading, error, title = '', members = [] }) => {
 
 Head.propTypes = {
     loading: PropTypes.bool,
+    error: PropTypes.object,
     title: PropTypes.string,
+    publicType: PropTypes.bool,
+    description: PropTypes.string,
     members: PropTypes.arrayOf(PropTypes.object)
 }
 

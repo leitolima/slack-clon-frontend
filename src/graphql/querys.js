@@ -56,6 +56,8 @@ export const GET_CHANNEL = gql`
         channel: getChannel(channelId: $channelId, userId: $userId) {
             id
             name
+            public
+            description
             members {
                 id
                 name
