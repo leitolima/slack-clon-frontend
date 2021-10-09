@@ -5,22 +5,45 @@ import {
     Container,
     Title,
     MembersContainer,
+    List,
+    ListItem,
+    ListImage,
+    Span,
 } from './styles';
 
 const Head = ({ loading, error, title = '', members = [] }) => {
-    return (
-        <Container>
+
+    const renderChildren = () => {
+        if(loading || error) return null;
+        return <>
             <Title>{title}</Title>
             <MembersContainer>
-                
+                <List>
+                {
+                    members.map((m, index) => {
+                        if (index > 2) return null;
+                        return (
+                            <ListItem>
+                                <ListImage src={m.imageUrl}/>
+                            </ListItem>
+                        )
+                    })
+                }
+                </List>
+                <Span>{members.length}</Span>
             </MembersContainer>
+        </>
+    }
+
+    return (
+        <Container>
+            { renderChildren() }
         </Container>
     )
 }
 
 Head.propTypes = {
     loading: PropTypes.bool,
-    loading: PropTypes.object,
     title: PropTypes.string,
     members: PropTypes.arrayOf(PropTypes.object)
 }

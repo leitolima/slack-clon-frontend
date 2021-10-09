@@ -34,3 +34,38 @@ export const MembersContainer = styled.div`
     border-radius: 6px;
     border: 1px solid ${p => p.theme.colors['violet']['border']};
 `;
+
+export const List = styled.ul`
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+`;
+
+export const ListItem = styled.li`
+    height: 24px;
+    position: relative;
+    border-radius: 3px;
+    &:nth-child(1) { z-index: 10; }
+    &:nth-child(2) { z-index: 9; right: 2px; }
+    &:nth-child(3) { z-index: 8; right: 4px; }
+    border-right: 2px solid ${p => p.theme.colors['dark']['section-background']};
+    &:last-child {
+        border-right: none;
+    }
+`;
+
+export const ListImage = styled.img`
+    height: 24px;
+    width: 24px;
+    border-radius: 3px;
+    object-fit: cover;
+`;
+
+export const Span = styled.span`
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0px 6px;
+    color: ${p => p.theme.colors['dark']['text']};
+`;
