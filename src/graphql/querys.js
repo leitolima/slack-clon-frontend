@@ -50,3 +50,19 @@ export const GET_MY_CHANNELS = gql`
         }
     }
 `;
+
+export const GET_CHANNEL = gql`
+    query getChannel($channelId: ID, $userId: ID) {
+        channel: getChannel(channelId: $channelId, userId: $userId) {
+            id
+            name
+            members {
+                id
+                name
+                username
+                imageUrl
+                position
+            }
+        }
+    }
+`;

@@ -34,7 +34,7 @@ const Main = () => {
         <MainField>
             <Header loading={loading} error={error}/>
             <Aside/>
-            <Section/>
+            <Section />
         </MainField>
     )
 }

@@ -1,16 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
     Container,
     Title,
+    MembersContainer,
 } from './styles';
 
-const Head = () => {
+const Head = ({ loading, error, title = '', members = [] }) => {
     return (
         <Container>
-            <Title>Tittle test</Title>
+            <Title>{title}</Title>
+            <MembersContainer>
+                
+            </MembersContainer>
         </Container>
     )
+}
+
+Head.propTypes = {
+    loading: PropTypes.bool,
+    loading: PropTypes.object,
+    title: PropTypes.string,
+    members: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default Head;
