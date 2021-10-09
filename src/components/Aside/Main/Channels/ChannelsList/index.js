@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'proptypes';
 import { useHistory } from 'react-router-dom';
 
-import { channelName } from '../../../../../apollo/state';
+import { channelId, channelName } from '../../../../../apollo/state';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faLock } from '@fortawesome/free-solid-svg-icons';
@@ -23,6 +23,7 @@ const ChannelsList = ({
     const route = pathname.replace('/', '');
 
     const handleSelect = (id, name) => {
+        channelId(id);
         channelName(name);
         history.push(`/${id}`)
     }

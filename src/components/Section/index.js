@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
-import { useQuery, useLazyQuery } from '@apollo/client';
+import { channelId } from '../../apollo/state';
+import { useQuery, useLazyQuery, useReactiveVar } from '@apollo/client';
 import { GET_CHANNEL, GET_USER_ID } from '../../graphql/querys';
 
 import {
@@ -12,20 +13,21 @@ import TextArea from './TextArea';
 
 const Section = () => {
 
+    const channel = useReactiveVar(channelId);
+
     const { data: { userId } } = useQuery(GET_USER_ID);
     const [getChannel, { data: channelData, loading, error }] = useLazyQuery(GET_CHANNEL);
 
     useEffect(() => {
-        if (userId && !channelData && !loading) {
-            const path = window.location.pathname.replace('/', '');
+        if (userId && channelId && !loading) {
             getChannel({
                 variables: {
-                    channelId: path,
+                    channelId: channel,
                     userId
                 }
             })
         }
-    }, [userId]);
+    }, [channel, userId]);
 
     return (
         <SectionField>

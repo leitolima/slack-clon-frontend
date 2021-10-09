@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
-import { userId } from './apollo/state';
+import { userId, channelId } from './apollo/state';
 import { useQuery } from '@apollo/client';
 import { GET_RANDOM_USER } from './graphql/querys';
 
@@ -29,6 +30,14 @@ const Main = () => {
     if(data?.user?.id) {
         userId(data.user.id)
     }
+
+    const location = useLocation();
+
+    useEffect(() => {
+        const path = location.pathname.replace('/', '');
+        if (path === '') return;
+        channelId(path);
+    }, [location]);
 
     return (
         <MainField>
