@@ -68,3 +68,13 @@ export const GET_CHANNEL = gql`
         }
     }
 `;
+
+export const GET_DIRECT_MESSAGES = gql`
+    query getDirectChannels($groupId: ID!) {
+        directs: getDirectChannels(groupId: $groupId) {
+            id
+            username
+            imageUrl
+        }
+    }
+`;
