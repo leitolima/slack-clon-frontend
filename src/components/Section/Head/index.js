@@ -41,7 +41,7 @@ const Head = ({
                     members.map((m, index) => {
                         if (index > 2) return null;
                         return (
-                            <ListItem>
+                            <ListItem key={index}>
                                 <ListImage src={m.imageUrl}/>
                             </ListItem>
                         )
