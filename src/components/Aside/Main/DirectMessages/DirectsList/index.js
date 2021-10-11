@@ -12,9 +12,6 @@ const DirectsList = ({
     loading,
     data,
 }) => {
-
-    console.log(data)
-
     return (
         <ListContainer show={show}>
             {

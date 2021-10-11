@@ -66,6 +66,16 @@ export const GET_CHANNEL = gql`
                 position
             }
         }
+        messages: getMessages(channelId: $channelId) {
+            id
+            text
+            reactions
+            user {
+                id
+                username
+                imageUrl
+            }
+        }
     }
 `;
 

@@ -39,7 +39,11 @@ const Section = () => {
                 members={channelData?.channel?.members}
                 description={channelData?.channel?.description}
             />
-            <MessagesArea/>
+            <MessagesArea
+                error={error}
+                loading={loading}
+                messages={channelData?.messages}
+            />
             <TextArea/>
         </SectionField>
     )
