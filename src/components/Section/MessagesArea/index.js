@@ -20,8 +20,12 @@ const MessagesArea = ({
         if (!messages || !messages.length) return null;
         return <ChatArea>
             {
-                messages.map(item => (
-                    <Message key={item.id} message={item}/>
+                messages.map((item, index, array) => (
+                    <Message
+                        key={item.id}
+                        message={item}
+                        first={index > 0 ? array[index-1].user.id !== item.user.id : true}
+                    />
                 ))
             }
         </ChatArea>

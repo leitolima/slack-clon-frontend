@@ -6,6 +6,7 @@ export const theme = {
             'message-text': '#D1D2D3',
             'item-hover': 'rgba(232, 232, 232, 0.04)',
             'section-background': '#1a1d21',
+            'section-background-hover': '#222529',
             'lightblue': '#1264a3',
             'checked': '#007a5a',
             'error': '#e01e5a',

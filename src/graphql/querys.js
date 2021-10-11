@@ -70,6 +70,8 @@ export const GET_CHANNEL = gql`
             id
             text
             reactions
+            date
+            time
             user {
                 id
                 username

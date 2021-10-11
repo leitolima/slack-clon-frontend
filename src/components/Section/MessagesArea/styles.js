@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     height: calc(100% - 155px);
-    width: calc(100% - 3px);
+    width: 100%;
     overflow-y: auto;
     &::-webkit-scrollbar {
         width: 8px;
@@ -16,8 +16,7 @@ export const Container = styled.div`
     }
 `;
 
-export const ChatArea = styled.div`
-    padding: 0 20px;
+export const ChatArea = styled.article`
     display: flex;
     flex-direction: column;
 `;
